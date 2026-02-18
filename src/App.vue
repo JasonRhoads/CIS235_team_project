@@ -1,47 +1,97 @@
-<script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
-</script>
-
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
+  <div class="app">
+    <header class="app-header">
+      <h1>Kids in Command</h1>
+      <p class="subtitle">Choose a theme and explore!</p>
+    </header>
 
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-    </div>
-  </header>
+    <main class="app-main">
+      <WidgetContainer>
+        <!-- Theme Selector widget -->
+        <WidgetCard>
+          <template #title>🎨 Theme Selector</template>
+          <ThemeSelector :themes="themes" v-model="currentTheme" />
+        </WidgetCard>
 
-  <main>
-    <TheWelcome />
-  </main>
+        <!-- Active Theme widget -->
+        <WidgetCard>
+          <template #title>🧩 Active Theme</template>
+
+          <!-- dynamic component swap -->
+          <component :is="currentThemeComponent" />
+        </WidgetCard>
+
+        <!-- Rewards widget (placeholder) -->
+        <WidgetCard>
+          <template #title>🏆 Rewards</template>
+          <p>Rewards coming soon…</p>
+        </WidgetCard>
+      </WidgetContainer>
+    </main>
+
+    <footer class="app-footer">
+      <small>Team Project • CIS 235</small>
+    </footer>
+  </div>
 </template>
 
+<script setup>
+import { computed, ref } from "vue";
+import WidgetContainer from "./components/WidgetContainer.vue";
+import WidgetCard from "./components/WidgetCard.vue";
+import ThemeSelector from "./components/ThemeSelector.vue";
+
+// Theme components (create these later)
+import SpaceTheme from "./themes/SpaceTheme.vue";
+import DinoTheme from "./themes/DinoTheme.vue";
+import PrincessTheme from "./themes/PrincessTheme.vue";
+
+const themes = [
+  { id: "space", label: "Space", icon: "🚀" },
+  { id: "dino", label: "Dinos", icon: "🦖" },
+  { id: "princess", label: "Princess", icon: "👑" },
+];
+
+const currentTheme = ref("space");
+
+const currentThemeComponent = computed(() => {
+  switch (currentTheme.value) {
+    case "dino":
+      return DinoTheme;
+    case "princess":
+      return PrincessTheme;
+    case "space":
+    default:
+      return SpaceTheme;
+  }
+});
+</script>
+
 <style scoped>
-header {
-  line-height: 1.5;
+.app {
+  min-height: 100vh;
+  font-family: Arial, sans-serif;
+  background: #fafafa;
+  color: #222;
 }
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
+.app-header {
+  padding: 20px 18px 10px;
+  text-align: center;
 }
 
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
+.subtitle {
+  margin: 6px 0 0;
+  opacity: 0.75;
+}
 
-  .logo {
-    margin: 0 2rem 0 0;
-  }
+.app-main {
+  padding: 14px 18px 22px;
+}
 
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
+.app-footer {
+  padding: 14px 18px;
+  text-align: center;
+  opacity: 0.7;
 }
 </style>

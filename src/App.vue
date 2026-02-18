@@ -7,29 +7,42 @@
 
     <main class="app-main">
       <WidgetContainer>
-        <!-- Theme Selector widget -->
         <WidgetCard>
           <template #title>🎨 Theme Selector</template>
           <ThemeSelector :themes="themes" v-model="currentTheme" />
         </WidgetCard>
 
-        <!-- Active Theme widget -->
         <WidgetCard>
-          <template #title>🧩 Active Theme</template>
-
-          <!-- dynamic component swap -->
-          <component :is="currentThemeComponent" />
+          <template #title>⭐ Favorite Item</template>
+          <FavoriteItemWidget :theme="currentTheme" />
         </WidgetCard>
 
-        <!-- Rewards widget (placeholder) -->
+        <WidgetCard>
+          <template #title>📅 Countdown</template>
+          <CountdownWidget />
+        </WidgetCard>
+
+        <WidgetCard>
+          <template #title>🌤 Weather</template>
+          <WeatherWidget />
+        </WidgetCard>
+
+        <WidgetCard>
+          <template #title>🗺 Mission</template>
+          <MissionWidget />
+        </WidgetCard>
+
         <WidgetCard>
           <template #title>🏆 Rewards</template>
-          <p>Rewards coming soon…</p>
+          <RewardsWidget />
         </WidgetCard>
       </WidgetContainer>
+
     </main>
 
     <footer class="app-footer">
+      <small>Jason Rhoads and Bobby Don</small>
+      <br />
       <small>Team Project • CIS 235</small>
     </footer>
   </div>
@@ -40,6 +53,13 @@ import { computed, ref } from "vue";
 import WidgetContainer from "./components/WidgetContainer.vue";
 import WidgetCard from "./components/WidgetCard.vue";
 import ThemeSelector from "./components/ThemeSelector.vue";
+import RewardsWidget from "./components/RewardsWidget.vue";
+import CountdownWidget from "./components/CountdownWidget.vue";
+import WeatherWidget from "./components/WeatherWidget.vue";
+import FavoriteItemWidget from "./components/FavoriteItemWidget.vue";
+import MissionWidget from "./components/MissionWidget.vue";
+
+
 
 // Theme components (create these later)
 import SpaceTheme from "./themes/SpaceTheme.vue";

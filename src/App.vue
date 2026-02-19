@@ -18,19 +18,20 @@
         </WidgetCard>
 
         <WidgetCard>
-          <template #title>📅 Countdown</template>
-          <CountdownWidget />
-        </WidgetCard>
-
-        <WidgetCard>
           <template #title>🌤 Weather</template>
           <WeatherWidget />
         </WidgetCard>
-
+        
+        <WidgetCard>
+          <template #title>📅 Countdown</template>
+          <CountdownWidget />
+        </WidgetCard>
+        
         <WidgetCard>
           <template #title>🗺 Mission</template>
           <MissionWidget />
         </WidgetCard>
+        
 
         <WidgetCard>
           <template #title>🏆 Rewards</template>
@@ -65,11 +66,13 @@ import MissionWidget from "./components/MissionWidget.vue";
 import SpaceTheme from "./themes/SpaceTheme.vue";
 import DinoTheme from "./themes/DinoTheme.vue";
 import PrincessTheme from "./themes/PrincessTheme.vue";
+import HeroTheme from "./themes/HeroTheme.vue";
 
 const themes = [
   { id: "space", label: "Space", icon: "🚀" },
   { id: "dino", label: "Dinos", icon: "🦖" },
   { id: "princess", label: "Princess", icon: "👑" },
+  { id: "hero", label: "Hero", icon: "👑" },
 ];
 
 const currentTheme = ref("space");
@@ -80,6 +83,8 @@ const currentThemeComponent = computed(() => {
       return DinoTheme;
     case "princess":
       return PrincessTheme;
+    case "hero":
+      return HeroTheme;
     case "space":
     default:
       return SpaceTheme;

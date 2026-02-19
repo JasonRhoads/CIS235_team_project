@@ -72,7 +72,7 @@ const themes = [
   { id: "space", label: "Space", icon: "🚀" },
   { id: "dino", label: "Dinos", icon: "🦖" },
   { id: "princess", label: "Princess", icon: "👑" },
-  { id: "hero", label: "Hero", icon: "👑" },
+  { id: "hero", label: "Hero", icon: "🦸" },
 ];
 
 const currentTheme = ref("space");

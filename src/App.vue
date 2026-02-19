@@ -1,5 +1,5 @@
 <template>
-  <div class="app">
+  <div class="app" :class="`theme-${currentTheme}`">
     <header class="app-header">
       <h1>Kids in Command</h1>
       <p class="subtitle">Choose a theme and explore!</p>
@@ -97,6 +97,9 @@ const currentThemeComponent = computed(() => {
   min-height: 100vh;
   font-family: Arial, sans-serif;
   background: #fafafa;
+  transition: background 0.5s ease;
+  background-size: cover;
+  background-position: center;
   color: #222;
 }
 
@@ -119,4 +122,26 @@ const currentThemeComponent = computed(() => {
   text-align: center;
   opacity: 0.7;
 }
+
+
+/* Space */
+.theme-space {
+  background-image: url('/backgrounds/SpaceBackground.png');
+}
+
+/* Dino */
+.theme-dino {
+  background-image: url('/backgrounds/DinosaurBackGround.jpg');
+}
+
+/* Princess */
+.theme-princess {
+  background-image: url('/backgrounds/PrincessBackground.webp');
+}
+
+/* Hero */
+.theme-hero {
+  background-image: url('/backgrounds/HeroBackGround.jpg');
+}
+
 </style>

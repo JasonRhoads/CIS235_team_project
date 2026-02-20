@@ -118,56 +118,61 @@ function closeDetails() {
 </script>
 
 <style scoped>
-.app {
-  min-height: 100vh;
-  min-width: 100vw;
-  font-family: Arial, sans-serif;
-  background: #fafafa;
-  transition: background 0.5s ease;
-  background-size: cover;
-  background-position: center;
-  color: #222;
-}
+    .app {
+        min-height: 100vh;
+        min-width: 100vw;
+        font-family: Arial, sans-serif;
+        background: #fafafa;
+        transition: background 0.5s ease;
+        background-size: cover;
+        background-position: center;
+        color: #222;
+    }
 
-.app-header {
-  padding: 20px 18px 10px;
-  text-align: center;
-}
+    .app-header {
+        padding: 20px 18px 10px;
+        text-align: center;
+    }
 
-.subtitle {
-  margin: 6px 0 0;
-  opacity: 0.75;
-}
+    subtitle {
+        margin: 6px 0 0;
+        /*opacity: 0.9;*/
+    }
 
-.app-main {
-  padding: 14px 18px 22px;
-}
+    .app-main {
+        padding: 14px 18px 22px;
+    }
 
-.app-footer {
-  padding: 14px 18px;
-  text-align: center;
-  opacity: 0.7;
-}
+    .app-footer {
+        padding: 14px 18px;
+        text-align: center;
+        /*opacity: 0.9;*/
+    }
 
 
-/* Space */
-.theme-space {
-  background-image: url('/backgrounds/SpaceBackground.png');
-}
+    /* Space */
+    .theme-space {
+        background-image: url('/backgrounds/SpaceBackground.png');
+    }
 
-/* Dino */
-.theme-dino {
-  background-image: url('/backgrounds/DinosaurBackGround.jpg');
-}
+        .theme-space header, .theme-space footer {
+            color: beige;
+        }
 
-/* Princess */
-.theme-princess {
-  background-image: url('/backgrounds/PrincessBackground.webp');
-}
+    /* Dino */
+    .theme-dino {
+        background-image: url('/backgrounds/DinosaurBackGround.jpg');
+    }
 
-/* Hero */
-.theme-hero {
-  background-image: url('/backgrounds/HeroBackGround.jpg');
-}
 
+
+    /* Princess */
+    .theme-princess {
+        background-image: url('/backgrounds/PrincessBackground.webp');
+    }
+
+    /* Hero */
+    .theme-hero {
+        background-image: url('/backgrounds/HeroBackGround.jpg');
+    }
 </style>

@@ -54,13 +54,15 @@
 
       <div v-if="following.length" class="list">
         <p class="next-title">Coming Up</p>
-        <ul>
-          <li v-for="item in followingLimited" :key="item.holiday.name + item.date.toISOString()">
-            <span class="li-name">{{ item.holiday.name }}</span>
-            <span class="li-date">{{ formatShortDate(item.date) }}</span>
-            <span class="li-days">{{ daysAway(item.date) }}d</span>
-          </li>
-        </ul>
+        <div class="expand" :class="{ open: showAll }">
+            <ul>
+                <li v-for="item in followingLimited" :key="item.holiday.name + item.date.toISOString()">
+                    <span class="li-name">{{ item.holiday.name }}</span>
+                    <span class="li-date">{{ formatShortDate(item.date) }}</span>
+                    <span class="li-days">{{ daysAway(item.date) }}d</span>
+                </li>
+            </ul>
+        </div>
 
         <button v-if="following.length > limit" class="more" @click="showAll = !showAll">
           {{ showAll ? "Show fewer" : "Show full list" }}
@@ -390,7 +392,25 @@
         cursor: pointer;
         background: #ff8c00;
         color: white;
+        transition: all 0.5s ease-in-out;
     }
+
+        /* Smooth expand/collapse for the list */
+    .expand {
+        overflow: hidden;
+        max-height: 160px;           /* height for ~3 items */
+        transition: max-height 0.35s ease;
+    }
+
+    .expand.open {
+        max-height: 800px;           /* big enough for full list */
+    }
+
+    /* Optional: make the list expansion feel smoother */
+    .expand ul {
+        margin: 8px 0 0;
+    }
+
 
     .hint { 
         opacity: 0.7; 

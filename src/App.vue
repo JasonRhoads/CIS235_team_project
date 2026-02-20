@@ -155,10 +155,6 @@ function closeDetails() {
   background-image: url('/backgrounds/SpaceBackground.png');
 }
 
-.theme-space footer {
-  color: red;
-}
-
 /* Dino */
 .theme-dino {
   background-image: url('/backgrounds/DinosaurBackGround.jpg');

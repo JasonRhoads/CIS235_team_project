@@ -7,7 +7,7 @@
 
     <main class="app-main">
       <WidgetContainer>
-        <WidgetCard @openDetails="openDetails('themes', '🎨 Theme Selector')">
+        <WidgetCard @openDetails="openDetails('theme', '🎨 Theme Selector')">
           <template #title>🎨 Theme Selector</template>
           <ThemeSelector :themes="themes" v-model="currentTheme" />
         </WidgetCard>
@@ -54,6 +54,7 @@
       <WeatherWidget v-else-if="openWidgetId === 'weather'" />
       <RewardsWidget v-else-if="openWidgetId === 'rewards'" />
       <FavoriteItemWidget v-else-if="openWidgetId === 'favorite'" :theme="currentTheme" />
+      <ThemeSelector v-else-if="openWidgetId === 'theme'"  :themes="themes" v-model="currentTheme" />
       <MissionWidget v-else-if="openWidgetId === 'mission'" />
     </WidgetDetails>
   </div>

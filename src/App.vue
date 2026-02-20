@@ -7,33 +7,33 @@
 
     <main class="app-main">
       <WidgetContainer>
-        <WidgetCard>
+        <WidgetCard @openDetails="openDetails('themes', '🎨 Theme Selector')">
           <template #title>🎨 Theme Selector</template>
           <ThemeSelector :themes="themes" v-model="currentTheme" />
         </WidgetCard>
 
-        <WidgetCard>
+        <WidgetCard @openDetails="openDetails('favorite', '⭐ Favorite Items')">
           <template #title>⭐ Favorite Item</template>
           <FavoriteItemWidget :theme="currentTheme" />
         </WidgetCard>
 
-        <WidgetCard>
+        <WidgetCard @openDetails="openDetails('weather', '🌤 Weather')">
           <template #title>🌤 Weather</template>
           <WeatherWidget />
         </WidgetCard>
         
-        <WidgetCard>
+        <WidgetCard @openDetails="openDetails('countdown', '📅 Countdown')">
           <template #title>📅 Countdown</template>
           <CountdownWidget />
         </WidgetCard>
         
-        <WidgetCard>
+        <WidgetCard @openDetails="openDetails('mission', '🗺 Mission')">
           <template #title>🗺 Mission</template>
           <MissionWidget />
         </WidgetCard>
         
 
-        <WidgetCard>
+        <WidgetCard @openDetails="openDetails('rewards', '🏆 Rewards')">
           <template #title>🏆 Rewards</template>
           <RewardsWidget />
         </WidgetCard>
@@ -46,6 +46,16 @@
       <br />
       <small>Team Project • CIS 235</small>
     </footer>
+
+
+    <WidgetDetails v-if="openWidgetId" :title="openWidgetTitle" @close="closeDetails">
+      <!-- Show the correct widget in big mode -->
+      <CountdownWidget v-if="openWidgetId === 'countdown'" />
+      <WeatherWidget v-else-if="openWidgetId === 'weather'" />
+      <RewardsWidget v-else-if="openWidgetId === 'rewards'" />
+      <FavoriteItemWidget v-else-if="openWidgetId === 'favorite'" :theme="currentTheme" />
+      <MissionWidget v-else-if="openWidgetId === 'mission'" />
+    </WidgetDetails>
   </div>
 </template>
 
@@ -59,6 +69,7 @@ import CountdownWidget from "./components/CountdownWidget.vue";
 import WeatherWidget from "./components/WeatherWidget.vue";
 import FavoriteItemWidget from "./components/FavoriteItemWidget.vue";
 import MissionWidget from "./components/MissionWidget.vue";
+import WidgetDetails from "./components/WidgetDetails.vue";
 
 
 
@@ -90,6 +101,19 @@ const currentThemeComponent = computed(() => {
       return SpaceTheme;
   }
 });
+
+const openWidgetId = ref("");   // "" means none open
+const openWidgetTitle = ref("");
+
+
+function openDetails(id, title) {
+  openWidgetId.value = id;
+  openWidgetTitle.value = title;
+}
+function closeDetails() {
+  openWidgetId.value = "";
+  openWidgetTitle.value = "";
+}
 </script>
 
 <style scoped>
@@ -128,6 +152,10 @@ const currentThemeComponent = computed(() => {
 /* Space */
 .theme-space {
   background-image: url('/backgrounds/SpaceBackground.png');
+}
+
+.theme-space footer {
+  color: red;
 }
 
 /* Dino */

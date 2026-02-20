@@ -416,8 +416,12 @@
 
     .row {
         display: grid;
-        grid-template-columns: 1fr 160px auto;
+        grid-template-columns: 1fr;
         gap: 10px;
+    }
+
+    .row input {
+        display: block;
     }
 
     .input {

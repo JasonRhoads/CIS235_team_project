@@ -7,13 +7,22 @@
 </template>
 
 <script setup>
-defineProps({
-  theme: { type: String, required: true }
-})
+    defineProps({
+        heme: { type: String, required: true }
+    })
 </script>
 
 <style scoped>
-.label { font-weight: 700; margin: 0 0 6px; }
-.value { margin: 0; }
-.hint { margin: 8px 0 0; opacity: 0.7; font-size: 13px; }
+    .label { 
+        font-weight: 700; 
+        margin: 0 0 6px; 
+    }
+    .value { 
+        margin: 0; 
+    }
+    .hint { 
+        margin: 8px 0 0; 
+        opacity: 0.7; 
+        font-size: 13px; 
+    }
 </style>

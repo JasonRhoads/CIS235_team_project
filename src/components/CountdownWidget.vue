@@ -395,23 +395,6 @@
         transition: all 0.5s ease-in-out;
     }
 
-        /* Smooth expand/collapse for the list */
-    .expand {
-        overflow: hidden;
-        max-height: 160px;           /* height for ~3 items */
-        transition: max-height 0.35s ease;
-    }
-
-    .expand.open {
-        max-height: 800px;           /* big enough for full list */
-    }
-
-    /* Optional: make the list expansion feel smoother */
-    .expand ul {
-        margin: 8px 0 0;
-    }
-
-
     .hint { 
         opacity: 0.7; 
         font-size: 13px; 

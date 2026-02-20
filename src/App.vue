@@ -95,6 +95,7 @@ const currentThemeComponent = computed(() => {
 <style scoped>
 .app {
   min-height: 100vh;
+  min-width: min(90vw, 1500px);
   font-family: Arial, sans-serif;
   background: #fafafa;
   transition: background 0.5s ease;
